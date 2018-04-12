@@ -8,10 +8,6 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/templates/BaseTemplate.xhtml">
-	<ui:define name="header">
-	
-	    Add your header here or delete to use the default
-	</ui:define>
 	<ui:define name="content">
 	    <p:dataTable var="room" value="#{roomsView.rooms}">
     <p:column headerText="Id">
@@ -21,11 +17,12 @@
     <p:column headerText="Number room">
         <h:outputText value="#{room.numberRoom}" />
     </p:column>
+    
+    <p:column headerText="disable">
+    	<p:inputSwitch value="#{room.disable}"/>
+    </p:column>
  
 </p:dataTable>
-	</ui:define>
-	<ui:define name="footer">
-	    Add your footer here or delete to use the default
 	</ui:define>
 </ui:composition>
 </html>

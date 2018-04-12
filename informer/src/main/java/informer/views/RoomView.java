@@ -3,6 +3,8 @@
  */
 package informer.views;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -12,24 +14,42 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class RoomView {
-	
+public class RoomView implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 212427736804088386L;
+
 	private int id;
 	private String numberRoom;
 	private boolean disable;
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getNumberRoom() {
 		return numberRoom;
 	}
+
 	public void setNumberRoom(String numberRoom) {
 		this.numberRoom = numberRoom;
 	}
 	
+
+	public boolean isDisable() {
+		return disable;
+	}
+
+	public void setDisable(boolean disable) {
+		this.disable = disable;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -39,7 +59,7 @@ public class RoomView {
 		result = prime * result + ((numberRoom == null) ? 0 : numberRoom.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -60,18 +80,10 @@ public class RoomView {
 			return false;
 		return true;
 	}
-	public boolean isDisable() {
-		return disable;
-	}
-	public void setDisable(boolean disable) {
-		this.disable = disable;
-	}
-	
+
 	@Override
 	public String toString() {
 		return "RoomView [id=" + id + ", numberRoom=" + numberRoom + ", disable=" + disable + "]";
 	}
-	
-	
 
 }
