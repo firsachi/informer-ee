@@ -7,22 +7,72 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
+<h:head>
+
+</h:head>
+
 <ui:composition template="/templates/BaseTemplate.xhtml">
+
 	<ui:define name="content">
-	    <p:dataTable var="room" value="#{roomsView.rooms}">
-    <p:column headerText="Id">
-        <h:outputText value="#{room.id}" />
-    </p:column>
- 
-    <p:column headerText="Number room">
-        <h:outputText value="#{room.numberRoom}" />
-    </p:column>
-    
-    <p:column headerText="disable">
-    	<p:inputSwitch value="#{room.disable}"/>
-    </p:column>
- 
-</p:dataTable>
+		<div class="row">
+			<div class="columns">
+				<p>
+					<button class="hollow button" data-toggle="modalRoom">Add</button>
+				</p>
+			</div>
+		</div>
+		
+		<div class="column">
+			<p:dataTable id="rooms" styleClass="table" var="room"
+				value="#{roomsView.rooms}">
+				<p:column headerText="Id">
+					<h:outputText value="#{room.id}" />
+				</p:column>
+
+				<p:column headerText="Number room">
+					<h:outputText value="#{room.numberRoom}" />
+				</p:column>
+
+				<p:column headerText="disable">
+
+				</p:column>
+
+			</p:dataTable>
+		</div>
+		
+		<div class="row">
+			<div class="columns">
+				
+				<div class="reveal" id="modalRoom" data-reveal="">
+					<p>Add new room.</p>
+					<button class="close-button" data-close=""
+						aria-label="Close reveal" type="button">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					
+					
+					<h:form id="roomForm">
+					
+					<h:outputLabel for="numberRoom">
+							Number room:
+							<h:inputText id="numberRoom1" value="#{roomView.numberRoom}" ></h:inputText>
+						</h:outputLabel>
+					
+						<h:outputLabel for="numberRoom">
+							Number room:
+							<h:inputText id="numberRoom" value="#{roomView.numberRoom}"></h:inputText>
+						</h:outputLabel>
+						
+						
+						
+					</h:form>
+					
+				</div>
+				
+			</div>
+		</div>
+
 	</ui:define>
 </ui:composition>
+
 </html>
