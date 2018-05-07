@@ -7,11 +7,14 @@ import java.util.List;
 
 import informer.entities.Room;
 
+
 /**
  * @author firsov
  *
  */
-public interface RoomDao extends BaseDao<Room>{
+public interface RoomDao{
+	
+	boolean add(Room room);
 	
 	List<Room> getList();
 

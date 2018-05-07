@@ -6,14 +6,16 @@ package informer.views;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
+import javax.validation.constraints.Size;
 
 /**
  * @author firsachi
  *
  */
 @ManagedBean
-@ViewScoped
+@RequestScoped
 public class RoomView implements Serializable {
 
 	/**
@@ -22,8 +24,19 @@ public class RoomView implements Serializable {
 	private static final long serialVersionUID = 212427736804088386L;
 
 	private int id;
+	
+	@Size(min = 3, max=3, message = "Please enter a valid username (3 characters)")
 	private String numberRoom;
 	private boolean disable;
+
+	
+	public RoomView() {
+		
+	}
+	
+	public RoomView(String numberRoom) {
+		this.numberRoom = numberRoom;
+	}
 
 	public int getId() {
 		return id;
@@ -49,6 +62,11 @@ public class RoomView implements Serializable {
 	public void setDisable(boolean disable) {
 		this.disable = disable;
 	}
+	
+	public void addRoom() {
+		System.out.println(this.toString());
+	}
+	
 
 	@Override
 	public int hashCode() {

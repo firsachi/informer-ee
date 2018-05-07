@@ -28,6 +28,10 @@ public class RoomService {
 
 	@EJB
 	private RoomTransformer roomTransformer;
+	
+	public void save(RoomView model) {
+		roomDao.add(roomTransformer.viewEntity(model));
+	}
 
 	public List<RoomView> getList() {
 		List<RoomView> rooms = new ArrayList<>();

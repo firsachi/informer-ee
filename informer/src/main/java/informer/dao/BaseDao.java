@@ -1,15 +1,10 @@
-/**
- * 
- */
 package informer.dao;
 
-import javax.ejb.Stateless;
+import java.util.List;
 
-/**
- * @author firsov
- *
- */
-@Stateless
 public interface BaseDao<E> {
 
+	boolean save(E entity);
+	
+	List<E> getList();
 }

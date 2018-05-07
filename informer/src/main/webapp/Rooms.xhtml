@@ -24,13 +24,13 @@
 		
 		<div class="column">
 			<p:dataTable id="rooms" styleClass="table" var="room"
-				value="#{roomsView.rooms}">
+				value="#{roomService.list}">
 				<p:column headerText="Id">
 					<h:outputText value="#{room.id}" />
 				</p:column>
 
 				<p:column headerText="Number room">
-					<h:outputText value="#{room.numberRoom}" />
+					<h:outputText  value="#{room.numberRoom}" />
 				</p:column>
 
 				<p:column headerText="disable">
@@ -51,19 +51,22 @@
 					</button>
 					
 					
-					<h:form id="roomForm">
-					
-					<h:outputLabel for="numberRoom">
-							Number room:
-							<h:inputText id="numberRoom1" value="#{roomView.numberRoom}" ></h:inputText>
-						</h:outputLabel>
-					
-						<h:outputLabel for="numberRoom">
-							Number room:
-							<h:inputText id="numberRoom" value="#{roomView.numberRoom}"></h:inputText>
+					<h:form id="newRoom" >
+					<h:outputLabel for="numberRoom" value="Number room:">
+						<h:inputHidden id="roomId" value="#{roomView.id}" />
+							
+							<h:inputText id="numberRoom" value="#{roomsView.roomNumber}">
+								<f:ajax execute="numberRoom" render="numberRoom"/>
+							</h:inputText>
+							<h:message for="numberRoom"></h:message>
+							
 						</h:outputLabel>
 						
+						<h:inputHidden id="roomDisable" value="#{roomView.disable}"/>
 						
+						<h:commandButton value="Submit" styleClass="hollow button">
+					 		<f:ajax execute="numberRoom" render=":newRoom numberRoomMgr" listener="#{roomsView.add}"/>
+						</h:commandButton>
 						
 					</h:form>
 					
