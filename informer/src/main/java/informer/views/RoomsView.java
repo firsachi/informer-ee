@@ -5,6 +5,7 @@ package informer.views;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -27,10 +28,13 @@ public class RoomsView {
 	
 	@ManagedProperty(value = "#{roomService}")
 	private RoomService roomService;
+	
+	@PostConstruct
+	public void init() {
+		this.rooms = roomService.getList();
+	}
 
 	public List<RoomView> getRooms() {
-		this.rooms = roomService.getList();
-		System.out.println(rooms.size());
 		return rooms;
 	}
 
@@ -51,7 +55,12 @@ public class RoomsView {
 	}
 	
 	public void add() {
-		System.out.println(new RoomView(getRoomNumber()));
+		RoomView roomView = new RoomView(getRoomNumber());
+		roomView.setId(3);
+		
+		this.rooms.add(roomView);
+		
+		System.out.println(rooms);
 	}
 	
 	public void save(RoomView roomView) {

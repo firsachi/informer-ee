@@ -14,23 +14,17 @@
 <ui:composition template="/templates/BaseTemplate.xhtml">
 
 	<ui:define name="content">
+
 		<div class="row">
-			<div class="columns">
-				<p>
-					<button class="hollow button" data-toggle="modalRoom">Add</button>
-				</p>
-			</div>
-		</div>
-		
-		<div class="column">
-			<p:dataTable id="rooms" styleClass="table" var="room"
+			<div class="medium-7 large-9 columns">
+				<p:dataTable id="rooms" styleClass="table" var="room"
 				value="#{roomService.list}">
 				<p:column headerText="Id">
 					<h:outputText value="#{room.id}" />
 				</p:column>
 
 				<p:column headerText="Number room">
-					<h:outputText  value="#{room.numberRoom}" />
+					<h:outputText value="#{room.numberRoom}" />
 				</p:column>
 
 				<p:column headerText="disable">
@@ -38,43 +32,29 @@
 				</p:column>
 
 			</p:dataTable>
-		</div>
-		
-		<div class="row">
-			<div class="columns">
-				
-				<div class="reveal" id="modalRoom" data-reveal="">
-					<p>Add new room.</p>
-					<button class="close-button" data-close=""
-						aria-label="Close reveal" type="button">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					
-					
-					<h:form id="newRoom" >
-					<h:outputLabel for="numberRoom" value="Number room:">
-						<h:inputHidden id="roomId" value="#{roomView.id}" />
+			</div>
+			
+			<div class="medium-5 large-3 columns">
+				<div class="callout secondary">
+					<h:form id="newRoom" rendered="#{!roomsView.roomNumber}">
+						<h:outputLabel for="numberRoom" value="Number room:">
 							
+
 							<h:inputText id="numberRoom" value="#{roomsView.roomNumber}">
-								<f:ajax execute="numberRoom" render="numberRoom"/>
 							</h:inputText>
 							<h:message for="numberRoom"></h:message>
-							
+
 						</h:outputLabel>
-						
-						<h:inputHidden id="roomDisable" value="#{roomView.disable}"/>
-						
-						<h:commandButton value="Submit" styleClass="hollow button">
-					 		<f:ajax execute="numberRoom" render=":newRoom numberRoomMgr" listener="#{roomsView.add}"/>
+
+						<h:inputHidden id="roomDisable" value="#{roomView.disable}" />
+
+						<h:commandButton value="Submit" styleClass="hollow button" actionListener="#{roomsView.add}">
 						</h:commandButton>
-						
+
 					</h:form>
-					
 				</div>
-				
 			</div>
 		</div>
-
 	</ui:define>
 </ui:composition>
 

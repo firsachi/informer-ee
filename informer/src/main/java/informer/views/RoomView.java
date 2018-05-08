@@ -6,7 +6,6 @@ package informer.views;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.validation.constraints.Size;
 
@@ -15,7 +14,7 @@ import javax.validation.constraints.Size;
  *
  */
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class RoomView implements Serializable {
 
 	/**
